@@ -1,0 +1,22 @@
+
+
+If you're in <%= @state.formatted_name %>, how about a <strong><%= @state.beer_name %></strong> from <strong><%= @state.brewery_name %></strong>?
+
+<br>
+
+
+c
+  <strong>Description:</strong> <%= @state.beer_description %>
+  <% end %></p>
+
+<p><%unless @state.beer_abv.nil?%>
+  <strong>ABV:</strong> <%= @state.beer_abv %>%
+  <% end %></p>
+
+<div><p><form action='/' method='POST'>
+ <input type="hidden" name="state_name" value="<%= @state.name %>" />
+ <button type='submit'>Give me another beer</button>
+</form></p>
+
+<p><a href="/">Select a different state</a></p>
+

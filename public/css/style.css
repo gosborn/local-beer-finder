@@ -1,0 +1,20 @@
+
+
+button {
+     background:none!important;
+     border:none; 
+     padding:0!important;
+     font: inherit;
+     cursor: pointer;
+     color: #575757;
+}
+
+a {
+  text-decoration: none;
+  color: #575757;
+}
+
+div {
+  width: 50%;
+  margin: 0 auto;
+  }

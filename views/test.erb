@@ -1,0 +1,20 @@
+
+Formatted name: <%= @state.formatted_name %><br>
+
+Random brewery name: <%= @brewery.name %><br>
+
+
+Random beer from that brewery: <%= @beer.name %><br>
+
+<%unless @beer.description.nil?%>
+  <strong>Description: </strong> <%= @beer.description %>
+  <% end %>
+
+
+<p><form action='/' method='POST'>
+ <input type="hidden" name="state_name" value="<%= @state.name %>" />
+ <button type='submit'>Give me another beer</button>
+</form></p>
+
+
+<p><a href="/">Select a different state</a></p>

@@ -1,0 +1,67 @@
+beer notes
+
+how about saving beer to a list?
+how about asking for a particular type?
+how about asking for more or less abv, ibu?
+
+
+beer = open('http://api.brewerydb.com/v2/?key=dd604aa40606566d3f9fcba2c8ff7d8c')
+
+http://api.brewerydb.com/v2/brewery/P1I1gt/beers?key=86218246293bbfe86b588c02dbad2206
+
+in browser, this address will get you all the beers from Buffalo Bill's Brewery
+
+
+
+beer_from_buffalo_bills_brewery = JSON.load(RestClient.get('http://api.brewerydb.com/v2/brewery/P1I1gt/beers?key=86218246293bbfe86b588c02dbad2206')
+
+to get a random beer from this hash
+
+newbeer["data"].sample["name"]
+
+seasonal information
+
+beer = newbeer["data"].sample
+
+beer["available"]["name"] == "Seasonal"
+
+using brewerydb gem
+
+beers in new york
+
+newyorks = b.locations.all(region: 'New York')
+
+random beer from new york
+
+newyorks.first["brewery_id"]
+
+hola = JSON.load(RestClient.get('http://api.brewerydb.com/v2/brewery/nuhnAb/beers?key=86218246293bbfe86b588c02dbad2206'))
+
+hola["data"].sample["name"]
+
+so, do we need to use brewery_db at all?
+
+
+locations = http://api.brewerydb.com/v2/locations?key=dd604aa40606566d3f9fcba2c8ff7d8c
+
+http://api.brewerydb.com/v2/locations?region=alabama&key=dd604aa40606566d3f9fcba2c8ff7d8c
+
+could build program to build a database in seeds.rb!
+
+state has many locations/breweries
+  name
+
+breweries have many beers
+  state_id
+  name
+  address
+
+
+state has many beers through breweries
+  brewery_id
+  description
+  abv
+  ibu
+
+  availability?
+

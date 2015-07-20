@@ -1,0 +1,6 @@
+result = RestClient.get("http://www.brewerydb.com/api/breweries?id=YKa9wh&format=json&apikey=dd604aa40606566d3f9fcba2c8ff7d8c")
+
+
+beer = open('http://api.brewerydb.com/v2/?key=dd604aa40606566d3f9fcba2c8ff7d8c')
+
+my key = dd604aa40606566d3f9fcba2c8ff7d8c
