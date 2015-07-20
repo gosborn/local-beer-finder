@@ -12,7 +12,7 @@ end
 @key = "dd604aa40606566d3f9fcba2c8ff7d8c"
 
 def load_db_json(input)
-  JSON.load(RestClient.get("http://api.brewerydb.com/v2/" + input){|response, request, result| response })
+  JSON.load(RestClient.get("http://api.brewerydb.com/v2/" + input){|response, request, result| response } #this returns the error, but doesn't raise an exception
 end
 
 def state_locations(state)
@@ -34,17 +34,20 @@ def iterate_through_json(state)  #should be called: make all breweries in a stat
   end
 end
 
-# state_names[0..3].each do |state|
-#   iterate_through_json(state)
-# end
-
 iterate_through_json(state_names[1])
 
 def all_beers_from_brewery(brewery)
-  load_db_json("brewery/#{brewery.db_code}/beers?key=#{@key}")["data"]
+  begin
+    load_db_json("brewery/#{brewery.db_code}/beers?key=#{@key}")["data"]
+  rescue => error
+    retry
+    puts "#{error} for #{brewery.name}"
+  end
 end
 
 @state = State.find_by(name: "alaska")
+
+#the below needs to be refactored into a function called something like: collect beers for brewery
 
 
 @state.breweries.each do |brewery|
@@ -53,13 +56,10 @@ end
       brewery.beers.build(name: hash["name"], db_code: hash["id"], abv: hash["abv"], ibu: hash["ibu"], description: hash["description"])
       brewery.save
     end
-  else
   end
 end
 
 
 
-#all_beers_from_brewery(brewery).each do |hash|
-  #@brewery = brewery
-  #@brewery.beers.build(name: hash["name"], db_code: hash["id"], abv: hash["abv"], ibu: hash["ibu"], description: hash["description"])
-#end
+
+
