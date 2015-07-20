@@ -1,5 +1,7 @@
 class BreweryDBParser
 
+  #most of BreweryDBParser lives in the seeds.rb file. Need to refactor that code and bring into this file
+
   def initialize
     @key = "dd604aa40606566d3f9fcba2c8ff7d8c"
   end
